@@ -14,11 +14,11 @@ knitr:
 
 <span style="color:#447099; font-size:270%; font-weight:bold;">It's (still) very bad to be wrong</span> <a href="https://simonpcouch.github.io/chores/"><img src="figures/hex-wall.png" alt="" align="right" height="450"/></a>
 
-<span style="color:#447099">Practical AI for Data Science</span>
+<span style="color:#447099">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
 
-<br><br><br>
+<br><br>
 
-<span style="color:#447099">_Simon Couch_ - @simonpcouch</span>
+<span style="color:#447099">_Sara Altman & Simon Couch_</span>
 
 <span style="color:#447099">AI Core Team @ Posit</span>
 
@@ -146,23 +146,7 @@ There are **3 cyan points.**
 
 ##
 
-```{r}
-#| echo: false
-#| fig-align: center
-bluff_results |>
-  filter(type == "mocked") |>
-  mutate(
-    score = fct_recode(score, "Correct" = "C", "Incorrect" = "I")
-  ) |>
-  ggplot(aes(y = model, fill = score)) +
-  geom_bar(position = "fill") +
-  scale_fill_manual(
-    breaks = rev,
-    values = c("Correct" = "#67a9cf", "Incorrect" = "#ef8a62")
-  ) +
-  scale_x_continuous(labels = scales::percent) +
-  labs(x = "Percent", y = "Model")
-```
+![](https://simonpcouch.github.io/bluffbench/index_files/figure-html/plot-bluff-eval-mocked-1.png)
 
 :::footer
 <span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
