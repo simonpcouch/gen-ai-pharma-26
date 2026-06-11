@@ -105,7 +105,7 @@ plot(runif(sample(3:10, 1)),
 
 ```{r}
 #| echo: false
-set.seed(1)
+set.seed(4)
 ```
 
 ```{r}
