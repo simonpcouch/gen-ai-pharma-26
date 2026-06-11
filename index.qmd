@@ -215,11 +215,11 @@ There is a **strong, negative association** between hp and mpg.
 
 :::
 
-::: {style="display: flex; align-items: flex-end; padding-bottom: 60px; font-size: 2.5em; color: #888;"}
+::: {style="display: flex; align-items: flex-end; padding-bottom: 165px; font-size: 2.5em; color: #888;"}
 ⟵
 :::
 
-::: {style="flex: 2; display: flex; flex-direction: column; gap: 0px; justify-content: flex-end; padding-bottom: 40px; border-left: 2px dashed #bbb; padding-left: 24px;"}
+::: {style="flex: 2; display: flex; flex-direction: column; gap: 0px; justify-content: flex-end; padding-bottom: 145px; border-left: 2px dashed #bbb; padding-left: 24px;"}
 
 ::: {style="align-self: flex-end; background-color: #d6eaf8; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"}
 Please describe this plot.
