@@ -104,6 +104,11 @@ plot(runif(sample(3:10, 1)),
 ##
 
 ```{r}
+#| echo: false
+set.seed(1)
+```
+
+```{r}
 #| fig-align: center
 plot(runif(sample(3:10, 1)), 
          col = rgb(runif(1), runif(1), runif(1)),
