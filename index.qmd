@@ -151,6 +151,15 @@ There are **3 cyan points.**
 
 ##
 
+::: {style="font-size: 1.2em; text-align: center;"}
+<br>
+<br>
+<br>
+_LLMs can 'see' plots just fine._
+:::
+
+##
+
 ::: {style="display: flex; flex-direction: row; gap: 24px; padding: 20px; max-width: 100%; margin: 40px auto 0 auto; font-size: 0.75em;"}
 
 ::: {style="flex: 3; display: flex; flex-direction: column; gap: 12px;"}
