@@ -200,7 +200,7 @@ Please describe this plot.
 
 ##
 
-::: {style="font-size: 1.2em; text-align: center;"}
+::: {style="font-size: 1.5em; text-align: center;"}
 <br>
 <br>
 <br>
@@ -251,7 +251,7 @@ Please describe this plot.
 
 ##
 
-::: {style="font-size: 1.2em; text-align: center;"}
+::: {style="font-size: 1.5em; text-align: center;"}
 <br>
 <br>
 <br>
@@ -284,7 +284,7 @@ There is a **strong, negative association.**
 
 ##
 
-::: {style="font-size: 1.2em; text-align: center;"}
+::: {style="font-size: 1.5em; text-align: center;"}
 <br>
 <br>
 <br>
@@ -342,7 +342,7 @@ _Agents enact a performance of progress._
 
 . . .
 
-::: {style="font-size: 1.2em; text-align: center;"}
+::: {style="font-size: 1.5em; text-align: center;"}
 <br>
 &emsp; &emsp; &emsp; &emsp; &emsp; 👽
 :::
