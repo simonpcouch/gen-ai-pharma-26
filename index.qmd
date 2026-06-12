@@ -34,10 +34,6 @@ theme_update(
 )
 ```
 
-<!-- ------------------------------------------------------------ -->
-<!-- PART 1: BLUFFBENCH                                           -->
-<!-- ------------------------------------------------------------ -->
-
 ## 🤫
 
 ```{r}
@@ -65,8 +61,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
 ggsave(
   "figures/mtcars-hp-mpg-thumb.png",
   ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(size = 2),
-  width = 3,
-  height = 2.5
+  width = 3, height = 2.5
 )
 ```
 
@@ -115,12 +110,9 @@ set.seed(4)
 
 ```{r}
 #| fig-align: center
-plot(
-  runif(sample(3:10, 1)),
-  col = rgb(runif(1), runif(1), runif(1)),
-  pch = 16,
-  cex = 2
-)
+plot(runif(sample(3:10, 1)), 
+         col = rgb(runif(1), runif(1), runif(1)),
+         pch = 16, cex = 2)
 ```
 
 ##
@@ -129,12 +121,9 @@ plot(
 #| include: false
 set.seed(1)
 png("figures/random-points-thumb.png", width = 300, height = 250)
-plot(
-  runif(sample(3:10, 1)),
-  col = rgb(runif(1), runif(1), runif(1)),
-  pch = 16,
-  cex = 2
-)
+plot(runif(sample(3:10, 1)), 
+     col = rgb(runif(1), runif(1), runif(1)),
+     pch = 16, cex = 2)
 dev.off()
 ```
 
@@ -306,10 +295,6 @@ There is a **strong, negative association.**
 
 :::
 
-<!-- ------------------------------------------------------------ -->
-<!-- PART 2: INTERLUDE                                            -->
-<!-- ------------------------------------------------------------ -->
-
 ##
 
 ::: {style="font-size: 1.2em; text-align: center;"}
@@ -317,177 +302,4 @@ There is a **strong, negative association.**
 <br>
 <br>
 _Agents enact a performance of progress._
-:::
-
-## LLMs can be wrong in strange ways
-
-<!-- TODO: MITM example with screenshot -->
-
-## They are rapidly evolving
-
-<!-- TODO: something we know today may not be true tomorrow -->
-<!-- jagged abilities, stateless aliens -->
-
-##
-
-```{r}
-#| echo: false
-#| fig-align: center
-claude_bluff <- bluff_results |>
-  filter(grepl("Claude", model)) |>
-  filter(!grepl("(high)", model, fixed = TRUE)) |>
-  mutate(correct = score == "C") |>
-  summarise(pct_correct = mean(correct), .by = model) |>
-  mutate(label = gsub(" \\((medium|minimal)\\)", "", model)) |>
-  bind_rows(
-    tibble(
-      model = "Claude Opus 4.5",
-      pct_correct = 0.613,
-      label = "Claude Opus 4.5"
-    )
-  ) |>
-  mutate(
-    release_date = as.Date(case_match(
-      label,
-      "Claude Opus 4.5" ~ "2025-11-01",
-      "Claude Opus 4.6" ~ "2026-02-05",
-      "Claude Opus 4.7" ~ "2026-04-16",
-      "Claude Opus 4.8" ~ "2026-05-28",
-      "Claude Fable 5" ~ "2026-06-09"
-    ))
-  )
-
-ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
-  geom_point(size = 3) +
-  ggrepel::geom_text_repel(aes(label = label), size = 4.5) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(x = "Release date", y = "% correct")
-```
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-None of this means agents aren't useful for data analysis.
-
-But it means the design around the model matters as much as the model itself.
-
-:::
-
-<!-- ------------------------------------------------------------ -->
-<!-- PART 3: AGENTS FOR DATA ANALYSIS                             -->
-<!-- ------------------------------------------------------------ -->
-
-# Agents for data analysis
-
-## What's a harness?
-
-::: {style="font-size: 0.9em;"}
-
-The system prompt, tools, and interface that wrap a model.
-
-Same model, different harness, different results.
-
-:::
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-We think the agent should control the **code**.
-
-Not ingest raw data. Not replace the analytical workflow. Write code, in a session you can see and interact with.
-
-:::
-
-## Posit Assistant
-
-::: {style="font-size: 0.9em;"}
-
-- AI assistant built into Positron, our open-source data science IDE
-- Designed specifically for data analysis workflows
-- Writes and runs R and Python code in your session
-
-:::
-
-## {.center}
-
-::: {style="font-size: 1.8em; text-align: center;"}
-<br>
-<br>
-The harness matters.
-:::
-
-##
-
-<!-- TODO: eval results plot — Posit Assistant vs. model alone vs. Claude Code -->
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-LLMs can do incredible things. They can put on a tremendous show, especially with code.
-
-But data analysis is different from building amazing things:
-
-:::
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-**1. The work needs to describe the actual world.**
-
-LLMs are _generative_. They are generally better at creating new things than at faithfully describing what's already there.
-
-:::
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-**2. Human understanding is (at least sometimes) the point.**
-
-Often, the purpose of an analysis is for the _receiver_ to gain an understanding---to fit it into their worldview. It's a **sensemaking** exercise.
-
-:::
-
-##
-
-::: {style="font-size: 1.2em; text-align: center;"}
-<br>
-<br>
-If sensemaking doesn't happen, the analysis hasn't been done.
-:::
-
-##
-
-::: {style="font-size: 0.95em;"}
-
-Agents are not necessarily good at this out of the box.
-
-You have to design around it.
-
-:::
-
-## Designing for sensemaking
-
-::: {style="font-size: 0.85em;"}
-
-- **Limit tool calls** to help you keep pace with the agent
-- Think through what you need to _see_ and what to _hide_
-- Design the interface to keep you involved---not necessarily in control, but involved enough that sensemaking isn't abandoned
-
-:::
-
-##
-
-::: {style="font-size: 0.85em;"}
-
-Small things matter:
-
-- Code syntax highlighting
-- Easy session access to keep you on the same page
-- Surfacing decisions
-
 :::
