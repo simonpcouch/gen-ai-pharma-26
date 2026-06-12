@@ -34,18 +34,65 @@ theme_update(
 )
 ```
 
-## 🤫
+
+##
 
 ```{r}
 #| include: false
-data(mtcars)
+mtcars$hp <- max(mtcars$hp) - mtcars$hp
+
+ggsave(
+  "figures/mtcars-hp-mpg-thumb.png",
+  ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(size = 2),
+  width = 3, height = 2.5
+)
 ```
 
-```{r}
-mtcars$hp <- max(mtcars$hp) - mtcars$hp
-```
+::: {style="display: flex; flex-direction: column; gap: 0px; padding: 20px; max-width: 100%; margin: 40px auto 0 auto;"}
+
+::: {.fragment style="align-self: flex-end; background-color: #d6eaf8; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"}
+Please plot hp vs mpg in mtcars
+:::
+
+::: {.fragment style="align-self: flex-start; background-color: white; padding: 12px 18px; border-radius: 18px 18px 18px 4px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;"}
+_Calls tool: Run R code_
+:::
+
+::: {.fragment style="align-self: flex-end; background-color: #d6eaf8; padding: 6px; border-radius: 18px 18px 4px 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"}
+[Plot]
+
+<br>
+:::
+
+::: {.fragment style="align-self: flex-start; background-color: white; padding: 12px 18px; border-radius: 18px 18px 18px 4px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;"}
+There is a **strong, negative association.**
+:::
+
+:::
 
 ##
+
+::: {style="display: flex; flex-direction: column; gap: 0px; padding: 20px; max-width: 100%; margin: 40px auto 0 auto;"}
+
+::: {style="align-self: flex-end; background-color: #d6eaf8; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"}
+Please plot hp vs mpg in mtcars
+:::
+
+::: {style="align-self: flex-start; background-color: white; padding: 12px 18px; border-radius: 18px 18px 18px 4px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;"}
+_Calls tool: Run R code_
+:::
+
+::: {style="align-self: flex-end; background-color: #d6eaf8; padding: 6px; border-radius: 18px 18px 4px 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"}
+![](figures/mtcars-hp-mpg-thumb.png){width="160px" style="border-radius: 12px; display: block;"}
+:::
+
+::: {style="align-self: flex-start; background-color: white; padding: 12px 18px; border-radius: 18px 18px 18px 4px; max-width: 70%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;"}
+There is a **strong, negative association.**
+:::
+
+:::
+
+## ❓
 
 ```{r}
 #| echo: false
@@ -54,16 +101,19 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
   geom_point(size = 3)
 ```
 
-##
+## 🤫
 
 ```{r}
 #| include: false
-ggsave(
-  "figures/mtcars-hp-mpg-thumb.png",
-  ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(size = 2),
-  width = 3, height = 2.5
-)
+data(mtcars)
 ```
+
+```{r}
+#| eval: false
+mtcars$hp <- max(mtcars$hp) - mtcars$hp
+```
+
+##
 
 ::: {style="display: flex; flex-direction: column; gap: 0px; padding: 20px; max-width: 100%; margin: 40px auto 0 auto;"}
 
@@ -156,6 +206,23 @@ There are **3 cyan points.**
 <br>
 <br>
 _LLMs can 'see' plots just fine._
+:::
+
+
+##
+
+![](figures/bluffbench-post.png){fig-align="center"}
+
+:::footer
+<span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
+:::
+
+##
+
+![](figures/original-bluffbench-results.png)
+
+:::footer
+<span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
 :::
 
 ##
@@ -291,22 +358,6 @@ There is a **strong, negative association.**
 👽🛸👾
 :::
 
-##
-
-![](https://simonpcouch.github.io/bluffbench/index_files/figure-html/plot-bluff-eval-mocked-1.png)
-
-:::footer
-<span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
-:::
-
-##
-
-![](figures/bluffbench-post.png){fig-align="center"}
-
-:::footer
-<span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
-:::
-
 ## {visibility="hidden"}
 
 ::: {style="display: flex; flex-direction: column; gap: 0px; padding: 20px; max-width: 100%; margin: 40px auto 0 auto; font-size: 0.85em;"}
@@ -329,6 +380,14 @@ _Calls tool: Run R code_
 There is a **strong, negative association.**
 :::
 
+:::
+
+##
+
+![](https://simonpcouch.github.io/bluffbench/index_files/figure-html/plot-bluff-eval-mocked-1.png)
+
+:::footer
+<span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
 :::
 
 ##
