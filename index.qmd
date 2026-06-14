@@ -451,10 +451,30 @@ but do LLMs _care_ about correctness?
 
 ## It's a convincing performance
 
-<!--show examples of bluffbench answers -->
+<style>
+/* "Zoom bigger" fragment: starts visible, scales up in place (stays centered)
+   when its step is reached. Reveal's built-in `grow` only scales 1.3x. */
+.reveal .slides section .fragment.zoom-big { opacity: 1; visibility: inherit; transition: transform 0.4s ease; }
+.reveal .slides section .fragment.zoom-big.visible { transform: scale(1.7); }
+</style>
 
-:::{.fragment}
-but it only sometimes lines up with reality
+::: {style="height: 560px; display:flex; flex-direction:row; gap:26px; justify-content:center; align-items:center;"}
+
+<!-- Order is 01 / 03 / 02 so the incorrect one (03) sits center and grows in place.
+     Click 1: 01 & 02 gray (semi-fade-out), 03 enlarges (zoom-big). Click 2: the
+     highlighted version fades in over 03. Click 3: the line appears. -->
+<img src="figures/bluffbench-performance-01.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
+
+<div class="fragment zoom-big" data-fragment-index="1" style="position:relative; z-index:10; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,.2);">
+<img src="figures/bluffbench-performance-03.png" class="fragment fade-out" data-fragment-index="2" style="height:285px; display:block;">
+<img src="figures/bluffbench-performance-03-highlighted.png" class="fragment" data-fragment-index="2" style="position:absolute; top:0; left:0; height:285px;">
+</div>
+
+<img src="figures/bluffbench-performance-02.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
+:::
+
+::: {.fragment fragment-index="3" style="text-align:center; margin-top:18px; font-size:1.2em;"}
+but one that occasionally fails to match reality
 :::
 
 ::: notes
@@ -463,19 +483,65 @@ The result is a model that moves analysis forward, but doesn't necessarily match
 and this can lead to deeply weird behavior
 :::
 
-## What does this mean for agents for data analysis?
+## The answers look the same
 
-:::{.fragment}
-we don't need to throw the whole endeavor away
+<div style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:34px; margin-top:24px;">
+<img src="figures/trees-plot.png" style="width:350px;">
+<div style="display:flex; flex-direction:column; gap:22px;">
+<div style="position:relative;">
+<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+</div>
+<div style="position:relative;">
+<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="5" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
+</div>
+<div style="position:relative;">
+<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="6" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+</div>
+</div>
+</div>
+
+::: {.fragment fragment-index="7" style="text-align: center; margin-top: 24px; font-size: 1.05em;"}
+:::
+
+::: notes
+The problem isn't just that the model is sometimes wrong; it's that the wrong answers look exactly like the right ones. The confidence, the format, and the phrasing are identical. and you don't know its wrong until you look
+:::
+
+## Correctness matters in data analysis
+
+::: {style="text-align:left; font-size:1.7em; margin-top:60px;"}
+and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transparency]{style="color:#447099; font-weight:700;"}
+:::
+
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:50px auto 0 auto;"}
+all often at odds with how LLMs behave
+:::
+
+::: notes
+callback to the opening "correctness matters" — reproducibility and transparency are also data-science values, all often at odds with LLMs.
+:::
+
+## {background-color="#447099"}
+
+::: {style="font-size: 1.5em; text-align: center; color: white;"}
+<br>
+<br>
+<br>
+_What does this mean for agents for data analysis?_
 :::
 
 :::notes
+don't need to throw the whole thing away
+
 We shouldn't take evidence like bluffbench to mean that LLMs are useless _anywhere_ you value correctness. 
 
 Instead, you have to figure out where they can fit and how to design around their limitations.
 :::
 
-##
+## Models improve over time
 
 ```{r}
 #| echo: false
@@ -506,6 +572,10 @@ claude_bluff <- bluff_results |>
 ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
   geom_point(size = 3) +
   ggrepel::geom_text_repel(aes(label = label), size = 4.5) +
+  scale_x_date(
+    date_labels = "%b %y",
+    date_breaks = "2 months"
+  ) +
   scale_y_continuous(labels = scales::percent) +
   labs(x = "Release date", y = "% correct")
 ```
@@ -515,23 +585,50 @@ another thing: they are getting more capable
 and this is just one this one eval
 :::
 
-## Agents for data analysis
-
-## What is an agent?
-
 ## Posit Assistant
 
-![](figures/posit-assistant.png){width="140px" style="border-radius: 12px; display: block;"}
+![](figures/posit-assistant.png){fig-align="center" width="820" style="border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.18);"}
 
-## The harness matters
+:::notes
+define agent
+:::
 
-![](figures/assistant-evals.png)
+## Three design choices
+
+::: {style="text-align:center; color:#447099; margin-bottom:18px;"}
+to keep analysis **correct · reproducible · transparent**
+:::
+
+::: {.incremental}
+1. The harness
+2. Code as the foundation
+3. The shape of the interaction
+:::
+
+## 1. The harness
+
+![](figures/assistant-evals.png){fig-align="center"}
+
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
+can make a difference in correctness
+:::
 
 ::: notes
 for correctness 
+define harness
 :::
 
-## Code is the right foundation
+## 2. Code as the foundation
+
+::: {.incremental}
+* Models are good at writing code
+* Code can be run again.
+* Code is auditable. 
+:::
+
+::: {.fragment style="text-align: center; font-size: 1.1em;"}
+→ keeps it **reproducible** and **transparent**
+:::
 
 ::: notes
 for correctness, reproducibility, transparency
@@ -540,19 +637,12 @@ Models are good at writing code
 Code is reproducible and auditable by the human
 :::
 
-## The interaction style matters 
+## 3. The shape of the interaction
 
-::: {.incremental}
-* Short turns
-* Auditable 
-* Shared environment
-:::
 
-::: notes
-auditability/transparent and understanding --> reproducibility and correctness
 
-What is the purpose of an analysis? 
-    * often (maybe not always), it is to impart a sense of understanding on a human 
-  What Posit Assistant does to still provide understanding -- shorter turns, see code
-    * These are also important for auditability and correctness. 
+::: {.incremental style="margin-top:22px; font-size:1.05em;"}
+- shorter turns
+- a shared environment
+- easy-to-read code
 :::
