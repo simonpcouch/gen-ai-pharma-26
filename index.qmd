@@ -517,25 +517,29 @@ The problem isn't just that the model is sometimes wrong, it's that the wrong an
 
 ## Correctness matters in data analysis
 
-::: {style="text-align:left; font-size:1.7em; margin-top:60px;"}
+::: {.fragment style="text-align:left; font-size:1.7em; margin-top:60px;"}
 and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transparency]{style="color:#447099; font-weight:700;"}
 :::
 
-::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:50px auto 0 auto;"}
-all often at odds with how LLMs behave
+::: {.fragment style="text-align:left; font-size:1.7em; margin-top:60px;"}
+which all often at odds with how LLMs behave
 :::
 
 ::: notes
 we already mentioned how "correctness matters". reproducibility and transparency are also central to data science, all often at odds with LLMs.
+
+What does this mean for agents for data analysis?
 :::
 
-## {background-color="#447099"}
+## {background-color="#f9e6b5"}
 
-::: {style="font-size: 1.5em; text-align: center; color: white;"}
+::: {style="font-size: 2em; text-align: left; color: #ee6331; font-weight: 700;"}
 <br>
 <br>
 <br>
-_What does this mean for agents for data analysis?_
+_Part II_
+
+LLMs are still useful for data analysis
 :::
 
 :::notes
@@ -544,8 +548,32 @@ don't need to throw the whole thing away
 We shouldn't take evidence like bluffbench to mean that LLMs are useless _anywhere_ you value correctness. 
 
 Instead, you have to figure out where they can fit and how to design around their limitations.
+
+we're going to talk about what we did...
 :::
 
+## {background-color="#447099"}
+
+<style>
+.reveal .slides section .fragment.toc-emph { opacity: 1; visibility: inherit; transition: font-weight .2s; }
+.reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
+</style>
+
+::: {style="text-align: center; color: white; margin-top: 60px;"}
+
+::: {style="font-size: 1.7em;"}
+LLMs are still useful for data analysis
+:::
+
+::: {style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;"}
+[1. Tell them to care about being right]{.fragment data-fragment-index="1"}
+
+[2. Design the scaffold so that it matters less if they're wrong]{.fragment data-fragment-index="1"}
+:::
+
+:::
+
+<!--
 ## Models improve over time
 
 ```{r}
@@ -603,6 +631,14 @@ ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
 another thing: they are getting more capable
 and this is just one this one eval
 :::
+--> 
+
+## We'll be talking about agents
+
+::: {.incremental}
+* Can gather information from the world (e.g., read files)
+* Can alter the world (e.g., run code)
+:::
 
 ## Posit Assistant
 
@@ -610,21 +646,33 @@ and this is just one this one eval
 
 :::notes
 define agent
+we are going to use Posit Assistant 
 :::
 
-## Three design choices
+## {background-color="#447099"}
 
-::: {style="text-align:center; color:#447099; margin-bottom:18px;"}
-to move towards **correct · reproducible · transparent** analyses
+<style>
+.reveal .slides section .fragment.toc-emph { opacity: 1; visibility: inherit; transition: font-weight .2s; }
+.reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
+</style>
+
+::: {style="text-align: center; color: white; margin-top: 60px;"}
+
+::: {style="font-size: 1.7em;"}
+LLMs are still useful for data analysis
 :::
 
-::: {.incremental}
-1. The harness
-2. Code as the foundation
-3. The shape of the interaction
+::: {style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;"}
+[1. Tell them to care about being right]{.fragment .toc-emph data-fragment-index="1"}
+
+[2. Design the scaffold so that it matters less if they're wrong]{.fragment .semi-fade-out data-fragment-index="1"}
 :::
 
-## 1. The harness
+:::
+
+## Tell the model to care about being right
+
+The harness matters
 
 ```{r}
 #| echo: false
@@ -683,16 +731,33 @@ for correctness
 define harness
 :::
 
-## 2. Code as the foundation
+## {background-color="#447099"}
+
+<style>
+.reveal .slides section .fragment.toc-emph { opacity: 1; visibility: inherit; transition: font-weight .2s; }
+.reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
+</style>
+
+::: {style="text-align: center; color: white; margin-top: 60px;"}
+
+::: {style="font-size: 1.7em;"}
+LLMs are still useful for data analysis
+:::
+
+::: {style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;"}
+[1. Tell them to care about being right]{.fragment .semi-fade-out data-fragment-index="1"}
+
+[2. Design the scaffold so that it matters less if they're wrong]{.fragment  .toc-emph data-fragment-index="1"}
+:::
+
+:::
+
+## Code as the foundation
 
 ::: {.incremental}
 * Models are good at writing code
-* Code can be run again.
-* Code is auditable. 
-:::
-
-::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
-reproducibility, transparency
+* Code can be run again - reproducibility
+* Code is auditable - transparency
 :::
 
 ::: notes
@@ -702,56 +767,42 @@ Models are good at writing code
 Code is reproducible and auditable by the human
 :::
 
-##
+## Code as the foundation
 
-![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+Makes auditing easy when it matters
 
-## 3. The shape of the interaction
-
-
-
-::: {.incremental style="margin-top:22px; font-size:1.05em;"}
-- Shorter turns 
-- Shared environment
-- Easy-to-read code
-:::
+![](figures/posit-assistant-code.png){fig-align="center"}
 
 ::: notes
-for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
+include that the code is easy to read
 :::
 
-## {background-color="#447099"}
-
-::: {style="font-size: 1.5em; text-align: center; color: white;"}
-<br>
-<br>
-<br>
-_What's the point of an analysis?_
-
-::: {.fragment style="font-size: 0.8em; margin-top: 40px;"}
-[(often)]{style="opacity:0.6;"} building an understanding of the data
-:::
-:::
-
-## Shorter turns
-
-<!-- todo: new gif --> 
-![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
-
-## Shorter turns
-
-::: {style="margin-top:50px; font-size:1.3em"}
-Keep pace with the agent during exploration and analysis
-:::
-
-## Shared environment 
+## Shared environment
 
 See eye-to-eye with the agent
 
 ![](figures/posit-assistant-console.png){fig-align="center"}
 
-## Easy-to-read code
+## Shorter turns
 
-Makes auditing easy when it matters
+_What's the point of an analysis?_
 
-![](figures/posit-assistant-code.png){fig-align="center"}
+::: notes
+for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
+:::
+
+## Shorter turns
+
+Keep pace with the agent during exploration and analysis
+
+<!-- todo: new gif --> 
+![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
+## Conclusion
+
+* LLMs are aliens 
+* But they are still useful for data analysis
+  * Tell them to care about correctness
+  * Design the scaffold so it doesn't matter if they listen
+    * Make them write code in the same environment as the user and show it to them
+    * Make them pause often 
