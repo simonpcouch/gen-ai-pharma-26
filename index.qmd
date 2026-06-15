@@ -28,6 +28,7 @@ library(bluffbench)
 library(dplyr)
 library(forcats)
 library(ggplot2)
+library(stringr)
 theme_update(
   text = element_text(size = 20),
   line = element_line(linewidth = 1)
@@ -545,16 +546,20 @@ Instead, you have to figure out where they can fit and how to design around thei
 
 ```{r}
 #| echo: false
-claude_bluff <- bluff_results |>
-  filter(grepl("Claude", model)) |>
-  filter(!grepl("(high)", model, fixed = TRUE)) |>
+claude_bluff <-
+  bluff_results |>
+  filter(
+    str_detect(model, "Claude"),
+    !str_detect(model, "(high)"),
+    type == "mocked"
+  ) |>
   mutate(correct = score == "C") |>
   summarise(pct_correct = mean(correct), .by = model) |>
-  mutate(label = gsub(" \\((medium|minimal)\\)", "", model)) |>
+  mutate(label = str_replace(model, " \\(.*\\)", "")) |>
   bind_rows(
     tibble(
       model = "Claude Opus 4.5",
-      pct_correct = 0.613,
+      pct_correct = 0.1, # placeholder -- need to add
       label = "Claude Opus 4.5"
     )
   ) |>
@@ -577,7 +582,12 @@ ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
     date_breaks = "2 months"
   ) +
   scale_y_continuous(labels = scales::percent) +
-  labs(x = "Release date", y = "% correct")
+  labs(
+    x = "Release date",
+    y = "% correct",
+    title = "Bluffbench performance over time",
+    subtitle = "For most expensive Claude models, mocked condition"
+  )
 ```
 
 :::notes
@@ -587,7 +597,7 @@ and this is just one this one eval
 
 ## Posit Assistant
 
-![](figures/posit-assistant.png){fig-align="center" width="820" style="border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.18);"}
+![](figures/posit-assistant.png){fig-align="center" width="820"}
 
 :::notes
 define agent
@@ -596,7 +606,7 @@ define agent
 ## Three design choices
 
 ::: {style="text-align:center; color:#447099; margin-bottom:18px;"}
-to keep analysis **correct · reproducible · transparent**
+to move towards **correct · reproducible · transparent** analyses
 :::
 
 ::: {.incremental}
@@ -626,8 +636,8 @@ define harness
 * Code is auditable. 
 :::
 
-::: {.fragment style="text-align: center; font-size: 1.1em;"}
-→ keeps it **reproducible** and **transparent**
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
+reproducibility, transparency
 :::
 
 ::: notes
@@ -637,12 +647,57 @@ Models are good at writing code
 Code is reproducible and auditable by the human
 :::
 
+##
+
+![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
 ## 3. The shape of the interaction
 
 
 
 ::: {.incremental style="margin-top:22px; font-size:1.05em;"}
-- shorter turns
-- a shared environment
-- easy-to-read code
+- Shorter turns 
+- Shared environment
+- Easy-to-read code
 :::
+
+::: notes
+for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
+:::
+
+## {background-color="#447099"}
+
+::: {style="font-size: 1.5em; text-align: center; color: white;"}
+<br>
+<br>
+<br>
+_What's the point of an analysis?_
+
+::: {.fragment style="font-size: 0.8em; margin-top: 40px;"}
+[(often)]{style="opacity:0.6;"} building an understanding of the data
+:::
+:::
+
+## Shorter turns
+
+<!-- todo: new gif --> 
+![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
+## Shorter turns
+
+::: {style="margin-top:50px; font-size:1.3em"}
+Keep pace with the agent during exploration and analysis
+:::
+
+## Shared environment 
+
+See eye-to-eye with the agent
+
+![](figures/posit-assistant-console.png){fig-align="center"}
+
+## Easy-to-read code
+
+Makes auditing easy when it matters
+
+![](figures/posit-assistant-code.png){fig-align="center"}
+
