@@ -1,4 +1,6 @@
-# It's (still) very bad to be wrong <a href="https://simonpcouch.github.io/chores/"><img src="figures/hex-wall.png" align="right" height="350" alt="Hex wall" /></a>
+# It's (still) very bad to be wrong
+
+<a href="https://simonpcouch.github.io/gen-ai-pharma-26"><img src="figures/title-slide.png" alt="Title slide: It's (still) very bad to be wrong — Agents for Correct, Transparent, and Reproducible Data Analysis, by Sara Altman & Simon Couch, AI Core Team @ Posit" width="100%" /></a>
 
 Source code and slides for "It's (still) very bad to be wrong: Agents for Correct, Transparent, and Reproducible Data Analysis," from Sara Altman and Simon Couch of the AI Core Team at Posit. The rendered slides are [here](https://simonpcouch.github.io/gen-ai-pharma-26).
 
