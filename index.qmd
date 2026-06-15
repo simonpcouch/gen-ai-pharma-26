@@ -541,6 +541,11 @@ Instead, you have to figure out where they can fit and how to design around thei
 
 ```{r}
 #| echo: false
+opus_4_5_pct <- readRDS("data/bluffbench_additional_models.rds") |>
+  filter(model == "Claude Opus 4.5", type == "mocked") |>
+  summarise(pct = mean(score == "C")) |>
+  pull(pct)
+
 claude_bluff <-
   bluff_results |>
   filter(
@@ -554,7 +559,7 @@ claude_bluff <-
   bind_rows(
     tibble(
       model = "Claude Opus 4.5",
-      pct_correct = 0.1, # placeholder -- need to add
+      pct_correct = opus_4_5_pct,
       label = "Claude Opus 4.5"
     )
   ) |>
