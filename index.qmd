@@ -12,15 +12,21 @@ knitr:
     comment: "#>"
 ---
 
-<span style="color:#447099; font-size:270%; font-weight:bold;">It's (still) very bad to be wrong</span> <a href="https://simonpcouch.github.io/chores/"><img src="figures/hex-wall.png" alt="" align="right" height="450"/></a>
+## {background-image="figures/hero-title-bg.webp" background-size="cover" background-position="center"}
 
-<span style="color:#447099">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
+::: {style="display:flex; justify-content:flex-end; align-items:center; min-height:80vh; padding-right:calc(13% - 70px);"}
+::: {style="width: 62%; text-align: right;"}
+<span style="color:#15324c; font-size:210%; font-weight:bold; line-height:1.12; display:block;">It's (still) very bad to be wrong</span>
 
-<br><br>
+<span style="color:#2b4a64; display:block; margin-top:0.7em;">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
 
-<span style="color:#447099">_Sara Altman & Simon Couch_</span>
+<br>
+<br>
 
-<span style="color:#447099">AI Core Team @ Posit</span>
+<span style="color:#15324c; display:block;">_Sara Altman & Simon Couch_</span>
+<span style="color:#2b4a64; display:block;">AI Core Team @ Posit</span>
+:::
+:::
 
 ```{r}
 #| include: false
@@ -746,4 +752,3 @@ See eye-to-eye with the agent
 Makes auditing easy when it matters
 
 ![](figures/posit-assistant-code.png){fig-align="center"}
-
