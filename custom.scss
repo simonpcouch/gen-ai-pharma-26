@@ -45,12 +45,6 @@ $presentation-heading-color: darken($purple, 30%) !default;
  color: #ffffff;
 }
 
-// White hyperlinks on dark (blue) slide backgrounds
-.reveal .slides section.has-dark-background a,
-.reveal .slides section.has-dark-background a:hover {
- color: #ffffff;
-}
-
 // Footer is rendered outside the section, so key off the currently-shown dark
 // slide. !important overrides the inline orange color on the footer span.
 body:has(section.present.has-dark-background) .footer,
