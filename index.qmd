@@ -696,3 +696,31 @@ Makes auditing easy when it matters
 
 ![](figures/posit-assistant-code.png){fig-align="center"}
 
+## {background-color="#447099"}
+
+::: {style="display: flex; flex-direction: column; gap: 24px; padding: 0 20px 30px 20px; max-width: 95%; margin: -25px auto 0 auto; line-height: 1.3;"}
+
+::: {style="background-color: white; padding: 16px 28px; border-radius: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); color: #447099;"}
+[**LLMs are aliens**]{style="font-size: 1.25em; font-family: 'Source Sans 3', sans-serif; font-weight: 500;"}
+
+::: {style="margin-top: 8px; font-family: 'Source Sans 3', sans-serif; font-weight: 300;"}
+• They can see plots just fine<br>
+• They are more concerned with performing progress than being right
+:::
+:::
+
+::: {style="background-color: white; padding: 16px 28px; border-radius: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); color: #447099;"}
+[**LLMs are still useful for data analysis**]{style="font-size: 1.25em; font-family: 'Source Sans 3', sans-serif; font-weight: 500;"}
+
+::: {style="margin-top: 8px; font-family: 'Source Sans 3', sans-serif; font-weight: 300;"}
+• Tell them to care about being right<br>
+• Design the scaffold so that it doesn't matter if they listen
+
+::: {style="margin-left: 32px; margin-top: 4px;"}
+◦ Make them write code (and show it to the user)<br>
+◦ Make them pause often
+:::
+:::
+:::
+
+:::
