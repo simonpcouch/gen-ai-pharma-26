@@ -798,11 +798,28 @@ Keep pace with the agent during exploration and analysis
 <!-- todo: new gif --> 
 ![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
 
-## Conclusion
+## {background-color="#447099"}
 
-* LLMs are aliens 
-* But they are still useful for data analysis
-  * Tell them to care about correctness
-  * Design the scaffold so it doesn't matter if they listen
-    * Make them write code in the same environment as the user and show it to them
-    * Make them pause often 
+::: {style="display: flex; flex-direction: column; gap: 32px; max-width: 90%; margin: 10px auto 0 auto;"}
+
+::: {.fragment style="background-color: #f9e6b5; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
+[_Part I_]{style="color: #ee6331; font-weight: 700; font-size: 0.9em;"}<br>
+[LLMs are aliens]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
+
+::: {style="color: #447099; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
+• They can see plots just fine<br>
+• They are more concerned with performing progress than being right
+:::
+:::
+
+::: {.fragment style="background-color: #f9e6b5; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
+[_Part II_]{style="color: #ee6331; font-weight: 700; font-size: 0.9em;"}<br>
+[LLMs are still useful for data analysis]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
+
+::: {style="color: #447099; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
+• Tell them to care about being right<br>
+• Design the scaffold so that it doesn't matter if they listen
+:::
+:::
+
+:::
