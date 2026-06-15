@@ -451,8 +451,6 @@ _Agents enact a performance of progress._
 })();
 </script>
 
-##
-
 ## Correctness matters in data analysis
 
 ::: {.fragment}
