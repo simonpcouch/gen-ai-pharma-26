@@ -12,19 +12,18 @@ knitr:
     comment: "#>"
 ---
 
-## {background-image="figures/hero-title-bg.webp" background-size="cover" background-position="center"}
+## {background-image="figures/hero-d55.webp" background-size="cover" background-position="center"}
 
 ::: {style="display:flex; justify-content:flex-end; align-items:center; min-height:80vh; padding-right:calc(13% - 70px);"}
-::: {style="width: 62%; text-align: right;"}
-<span style="color:#15324c; font-size:210%; font-weight:bold; line-height:1.12; display:block;">It's (still) very bad to be wrong</span>
+::: {style="width: 62%; text-align: right; font-family:'DM Sans',sans-serif;"}
+<span style="color:#ffffff; font-size:215%; font-weight:800; line-height:1.1; display:block;">It's (still) very bad to be wrong</span>
 
-<span style="color:#2b4a64; display:block; margin-top:0.7em;">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
+<span style="color:#cdd9e6; display:block; margin-top:0.6em;">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
 
 <br>
-<br>
 
-<span style="color:#15324c; display:block;">_Sara Altman & Simon Couch_</span>
-<span style="color:#2b4a64; display:block;">AI Core Team @ Posit</span>
+<span style="color:#ffffff; display:block; font-weight:600;">Sara Altman & Simon Couch</span>
+<span style="color:#ee6331; font-size:0.85em;">AI Core Team @ Posit</span>
 :::
 :::
 
