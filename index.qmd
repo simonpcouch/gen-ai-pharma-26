@@ -617,10 +617,56 @@ to move towards **correct · reproducible · transparent** analyses
 
 ## 1. The harness
 
-![](figures/assistant-evals.png){fig-align="center"}
+```{r}
+#| echo: false
+#| fig-align: center
+raw <- readRDS("data/bluffbench_additional_models.rds") |>
+  filter(type == "intuitive") |>
+  summarise(pct = mean(score == "C"), .by = model) |>
+  mutate(source = "No harness")
 
-::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
-can make a difference in correctness
+harness <- read.csv("data/harness_data.csv") |>
+  filter(harness == "PositAssistant", condition == "intuitive") |>
+  mutate(
+    model = paste0(
+      "Claude ",
+      model,
+      ifelse(thinking == "Medium", " (medium)", "")
+    )
+  ) |>
+  summarise(pct = mean(correct), .by = model) |>
+  mutate(source = "Posit Assistant")
+
+bind_rows(raw, harness) |>
+  filter(model %in% intersect(raw$model, harness$model)) |>
+  mutate(
+    model = factor(
+      model,
+      levels = c(
+        "Claude Haiku 4.5",
+        "Claude Sonnet 4.6",
+        "Claude Sonnet 4.6 (medium)",
+        "Claude Opus 4.8 (medium)"
+      )
+    ),
+    source = factor(source, levels = c("No harness", "Posit Assistant"))
+  ) |>
+  ggplot(aes(y = model, x = pct, fill = source)) +
+  geom_col(position = position_dodge()) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(
+    values = c("No harness" = "#bbbbbb", "Posit Assistant" = "#447099")
+  ) +
+  labs(
+    x = NULL,
+    y = "% correct (intuitive)",
+    fill = NULL
+  ) +
+  theme_minimal()
+```
+
+::: {.fragment}
+Can make a difference in correctness
 :::
 
 ::: notes
