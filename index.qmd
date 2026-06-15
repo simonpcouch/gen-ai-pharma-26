@@ -234,6 +234,10 @@ _LLMs can 'see' plots just fine._
 
 ![](figures/original-bluffbench-results.png)
 
+. . .
+
+[👽]{style="position: absolute; top: 6%; right: 12%; font-size: 4em; transform: rotate(-18deg);"}
+
 :::footer
 <span style="color:#ee6331;">simonpcouch.github.io/bluffbench</span>
 :::
