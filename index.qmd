@@ -16,7 +16,7 @@ knitr:
 
 ::: {style="display:flex; justify-content:flex-end; align-items:center; min-height:80vh; padding-right:calc(13% - 70px);"}
 ::: {style="width: 62%; text-align: right; font-family:'DM Sans',sans-serif;"}
-<span style="color:#ffffff; font-size:215%; font-weight:800; line-height:1.1; display:block;">It's (still) very bad to be wrong</span>
+<span style="color:#ffffff; font-size:215%; font-weight:600; line-height:0.98; display:block;">It's (still) very bad to be wrong</span>
 
 <span style="color:#cdd9e6; display:block; margin-top:0.7em; font-family:'DM Sans',sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:0.16em; font-size:0.78em;">Agents for Correct, Transparent, and Reproducible Data Analysis</span>
 
