@@ -45,6 +45,13 @@ $presentation-heading-color: darken($purple, 30%) !default;
  color: #ffffff;
 }
 
+// Footer is rendered outside the section, so key off the currently-shown dark
+// slide. !important overrides the inline orange color on the footer span.
+body:has(section.present.has-dark-background) .footer,
+body:has(section.present.has-dark-background) .footer * {
+ color: darken($purple, 25%) !important;
+}
+
 // Additional colors for code
 $code-bg: lighten($purple, 73%) !default;  // Very light background
 $code-color: darken($purple, 30%) !default;
