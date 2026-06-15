@@ -22,8 +22,8 @@ knitr:
 
 <br>
 
-<span style="color:#ffffff; display:block; font-weight:600;">Sara Altman & Simon Couch</span>
-<span style="color:#ee6331; font-size:0.85em;">AI Core Team @ Posit</span>
+<span style="color:#ffffff; display:block; font-weight:300; font-style:italic;">Sara Altman & Simon Couch</span>
+<span style="color:#f07344; font-size:0.85em;">AI Core Team @ Posit</span>
 :::
 :::
 
