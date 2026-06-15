@@ -457,6 +457,13 @@ _Agents enact a performance of progress._
 but do LLMs _care_ about correctness?
 :::
 
+::: notes
+so why is this a problem?
+when you're working with real data with real world consequences, being correct matters. 
+correctness, fittingly, is really a core value of data science
+and LLM behavior doesn't necessarily always line up with this value
+:::
+
 ## It's a convincing performance
 
 <style>
@@ -481,9 +488,10 @@ but one that occasionally fails to match reality
 :::
 
 ::: notes
-The result is a model that moves analysis forward, but doesn't necessarily match the values of data science, including correctness and skepticism. 
-
-and this can lead to deeply weird behavior
+but it's a convincing performance right
+we've seen in bluffbench that the model will interpret the plot, and will provide details and supposed evidence for what they see 
+they act like they are moving the analysis forward
+the only problem is that, like in this case where it says this clearly positive trend is negative, is that **it's one that can fail to match reality**
 :::
 
 ## The answers look the same
@@ -511,6 +519,11 @@ and this can lead to deeply weird behavior
 
 ::: notes
 The problem isn't just that the model is sometimes wrong, it's that the wrong answers can be indistinguishable from the right ones
+
+we have a clearly parabolic plot
+and three descriptions from the same model
+shared tone, shared style, shared length -- but different description each time
+if you didn't know waht the plot looked like, you wouldn't be able to disentangel the correct ones from the incorrect ones
 :::
 
 ## Correctness matters in data analysis
@@ -743,19 +756,17 @@ define harness
 .reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
 </style>
 
-::: {style="text-align: center; color: white; margin-top: 60px;"}
-
-::: {style="font-size: 1.7em;"}
-LLMs are still useful for data analysis
-:::
-
-::: {style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;"}
-[1. Tell them to care about being right]{.fragment .semi-fade-out data-fragment-index="1"}
-
-[2. Design the scaffold so that it matters less if they're wrong]{.fragment  .toc-emph data-fragment-index="1"}
-:::
-
-:::
+<div style="text-align: center; color: white; margin-top: 60px;">
+<div style="font-size: 1.7em;">LLMs are still useful for data analysis</div>
+<div style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;">
+<span class="fragment semi-fade-out" data-fragment-index="1">1. Tell them to care about being right</span><br><br>
+<span class="fragment toc-emph" data-fragment-index="1">2. Design the scaffold so that it matters less if they're wrong</span>
+<div style="font-size: 0.62em; margin-left: 1.5em; line-height: 1.7; margin-top: 12px; opacity: 0.9;">
+• Have the model write code, and show it to the user<br>
+• Have the model pause often
+</div>
+</div>
+</div>
 
 ## Code as the foundation
 
