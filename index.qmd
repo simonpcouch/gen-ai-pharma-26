@@ -789,6 +789,14 @@ Keep pace with the agent during exploration and analysis
 <!-- todo: new gif --> 
 ![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
 
+## Conclusion
+
+* LLMs are aliens 
+* But they are still useful for data analysis
+  * Tell them to care about correctness
+  * Design the scaffold so it doesn't matter if they listen
+    * Make them write code in the same environment as the user and show it to them
+    * Make them pause often 
 
 
 
