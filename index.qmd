@@ -453,17 +453,12 @@ but do LLMs _care_ about correctness?
 ## It's a convincing performance
 
 <style>
-/* "Zoom bigger" fragment: starts visible, scales up in place (stays centered)
-   when its step is reached. Reveal's built-in `grow` only scales 1.3x. */
 .reveal .slides section .fragment.zoom-big { opacity: 1; visibility: inherit; transition: transform 0.4s ease; }
 .reveal .slides section .fragment.zoom-big.visible { transform: scale(1.7); }
 </style>
 
 ::: {style="height: 560px; display:flex; flex-direction:row; gap:26px; justify-content:center; align-items:center;"}
 
-<!-- Order is 01 / 03 / 02 so the incorrect one (03) sits center and grows in place.
-     Click 1: 01 & 02 gray (semi-fade-out), 03 enlarges (zoom-big). Click 2: the
-     highlighted version fades in over 03. Click 3: the line appears. -->
 <img src="figures/bluffbench-performance-01.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
 
 <div class="fragment zoom-big" data-fragment-index="1" style="position:relative; z-index:10; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,.2);">
@@ -508,7 +503,7 @@ and this can lead to deeply weird behavior
 :::
 
 ::: notes
-The problem isn't just that the model is sometimes wrong; it's that the wrong answers look exactly like the right ones. The confidence, the format, and the phrasing are identical. and you don't know its wrong until you look
+The problem isn't just that the model is sometimes wrong, it's that the wrong answers can be indistinguishable from the right ones
 :::
 
 ## Correctness matters in data analysis
@@ -522,7 +517,7 @@ all often at odds with how LLMs behave
 :::
 
 ::: notes
-callback to the opening "correctness matters" — reproducibility and transparency are also data-science values, all often at odds with LLMs.
+we already mentioned how "correctness matters". reproducibility and transparency are also central to data science, all often at odds with LLMs.
 :::
 
 ## {background-color="#447099"}
