@@ -28,6 +28,7 @@ library(bluffbench)
 library(dplyr)
 library(forcats)
 library(ggplot2)
+library(stringr)
 theme_update(
   text = element_text(size = 20),
   line = element_line(linewidth = 1)
@@ -44,7 +45,8 @@ mtcars$hp <- max(mtcars$hp) - mtcars$hp
 ggsave(
   "figures/mtcars-hp-mpg-thumb.png",
   ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(size = 2),
-  width = 3, height = 2.5
+  width = 3,
+  height = 2.5
 )
 ```
 
@@ -160,9 +162,12 @@ set.seed(4)
 
 ```{r}
 #| fig-align: center
-plot(runif(sample(3:10, 1)), 
-         col = rgb(runif(1), runif(1), runif(1)),
-         pch = 16, cex = 2)
+plot(
+  runif(sample(3:10, 1)),
+  col = rgb(runif(1), runif(1), runif(1)),
+  pch = 16,
+  cex = 2
+)
 ```
 
 ##
@@ -171,9 +176,12 @@ plot(runif(sample(3:10, 1)),
 #| include: false
 set.seed(1)
 png("figures/random-points-thumb.png", width = 300, height = 250)
-plot(runif(sample(3:10, 1)), 
-     col = rgb(runif(1), runif(1), runif(1)),
-     pch = 16, cex = 2)
+plot(
+  runif(sample(3:10, 1)),
+  col = rgb(runif(1), runif(1), runif(1)),
+  pch = 16,
+  cex = 2
+)
 dev.off()
 ```
 
@@ -433,3 +441,263 @@ _Agents enact a performance of progress._
   requestAnimationFrame(tick);
 })();
 </script>
+
+##
+
+## Correctness matters in data analysis
+
+::: {.fragment}
+but do LLMs _care_ about correctness?
+:::
+
+## It's a convincing performance
+
+<style>
+/* "Zoom bigger" fragment: starts visible, scales up in place (stays centered)
+   when its step is reached. Reveal's built-in `grow` only scales 1.3x. */
+.reveal .slides section .fragment.zoom-big { opacity: 1; visibility: inherit; transition: transform 0.4s ease; }
+.reveal .slides section .fragment.zoom-big.visible { transform: scale(1.7); }
+</style>
+
+::: {style="height: 560px; display:flex; flex-direction:row; gap:26px; justify-content:center; align-items:center;"}
+
+<!-- Order is 01 / 03 / 02 so the incorrect one (03) sits center and grows in place.
+     Click 1: 01 & 02 gray (semi-fade-out), 03 enlarges (zoom-big). Click 2: the
+     highlighted version fades in over 03. Click 3: the line appears. -->
+<img src="figures/bluffbench-performance-01.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
+
+<div class="fragment zoom-big" data-fragment-index="1" style="position:relative; z-index:10; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,.2);">
+<img src="figures/bluffbench-performance-03.png" class="fragment fade-out" data-fragment-index="2" style="height:285px; display:block;">
+<img src="figures/bluffbench-performance-03-highlighted.png" class="fragment" data-fragment-index="2" style="position:absolute; top:0; left:0; height:285px;">
+</div>
+
+<img src="figures/bluffbench-performance-02.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
+:::
+
+::: {.fragment fragment-index="3" style="text-align:center; margin-top:18px; font-size:1.2em;"}
+but one that occasionally fails to match reality
+:::
+
+::: notes
+The result is a model that moves analysis forward, but doesn't necessarily match the values of data science, including correctness and skepticism. 
+
+and this can lead to deeply weird behavior
+:::
+
+## The answers look the same
+
+<div style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:34px; margin-top:24px;">
+<img src="figures/trees-plot.png" style="width:350px;">
+<div style="display:flex; flex-direction:column; gap:22px;">
+<div style="position:relative;">
+<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+</div>
+<div style="position:relative;">
+<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="5" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
+</div>
+<div style="position:relative;">
+<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:620px; display:block;">
+<span class="fragment" data-fragment-index="6" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+</div>
+</div>
+</div>
+
+::: {.fragment fragment-index="7" style="text-align: center; margin-top: 24px; font-size: 1.05em;"}
+:::
+
+::: notes
+The problem isn't just that the model is sometimes wrong; it's that the wrong answers look exactly like the right ones. The confidence, the format, and the phrasing are identical. and you don't know its wrong until you look
+:::
+
+## Correctness matters in data analysis
+
+::: {style="text-align:left; font-size:1.7em; margin-top:60px;"}
+and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transparency]{style="color:#447099; font-weight:700;"}
+:::
+
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:50px auto 0 auto;"}
+all often at odds with how LLMs behave
+:::
+
+::: notes
+callback to the opening "correctness matters" — reproducibility and transparency are also data-science values, all often at odds with LLMs.
+:::
+
+## {background-color="#447099"}
+
+::: {style="font-size: 1.5em; text-align: center; color: white;"}
+<br>
+<br>
+<br>
+_What does this mean for agents for data analysis?_
+:::
+
+:::notes
+don't need to throw the whole thing away
+
+We shouldn't take evidence like bluffbench to mean that LLMs are useless _anywhere_ you value correctness. 
+
+Instead, you have to figure out where they can fit and how to design around their limitations.
+:::
+
+## Models improve over time
+
+```{r}
+#| echo: false
+claude_bluff <-
+  bluff_results |>
+  filter(
+    str_detect(model, "Claude"),
+    !str_detect(model, "(high)"),
+    type == "mocked"
+  ) |>
+  mutate(correct = score == "C") |>
+  summarise(pct_correct = mean(correct), .by = model) |>
+  mutate(label = str_replace(model, " \\(.*\\)", "")) |>
+  bind_rows(
+    tibble(
+      model = "Claude Opus 4.5",
+      pct_correct = 0.1, # placeholder -- need to add
+      label = "Claude Opus 4.5"
+    )
+  ) |>
+  mutate(
+    release_date = as.Date(case_match(
+      label,
+      "Claude Opus 4.5" ~ "2025-11-01",
+      "Claude Opus 4.6" ~ "2026-02-05",
+      "Claude Opus 4.7" ~ "2026-04-16",
+      "Claude Opus 4.8" ~ "2026-05-28",
+      "Claude Fable 5" ~ "2026-06-09"
+    ))
+  )
+
+ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
+  geom_point(size = 3) +
+  ggrepel::geom_text_repel(aes(label = label), size = 4.5) +
+  scale_x_date(
+    date_labels = "%b %y",
+    date_breaks = "2 months"
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    x = "Release date",
+    y = "% correct",
+    title = "Bluffbench performance over time",
+    subtitle = "For most expensive Claude models, mocked condition"
+  )
+```
+
+:::notes
+another thing: they are getting more capable
+and this is just one this one eval
+:::
+
+## Posit Assistant
+
+![](figures/posit-assistant.png){fig-align="center" width="820"}
+
+:::notes
+define agent
+:::
+
+## Three design choices
+
+::: {style="text-align:center; color:#447099; margin-bottom:18px;"}
+to move towards **correct · reproducible · transparent** analyses
+:::
+
+::: {.incremental}
+1. The harness
+2. Code as the foundation
+3. The shape of the interaction
+:::
+
+## 1. The harness
+
+![](figures/assistant-evals.png){fig-align="center"}
+
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
+can make a difference in correctness
+:::
+
+::: notes
+for correctness 
+define harness
+:::
+
+## 2. Code as the foundation
+
+::: {.incremental}
+* Models are good at writing code
+* Code can be run again.
+* Code is auditable. 
+:::
+
+::: {.fragment style="background:#447099; color:white; border-radius:18px; padding:14px 28px; font-size:1.3em; box-shadow:0 4px 16px rgba(0,0,0,.2); width:fit-content; margin:24px auto 0 auto;"}
+reproducibility, transparency
+:::
+
+::: notes
+for correctness, reproducibility, transparency
+
+Models are good at writing code
+Code is reproducible and auditable by the human
+:::
+
+##
+
+![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
+## 3. The shape of the interaction
+
+
+
+::: {.incremental style="margin-top:22px; font-size:1.05em;"}
+- Shorter turns 
+- Shared environment
+- Easy-to-read code
+:::
+
+::: notes
+for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
+:::
+
+## {background-color="#447099"}
+
+::: {style="font-size: 1.5em; text-align: center; color: white;"}
+<br>
+<br>
+<br>
+_What's the point of an analysis?_
+
+::: {.fragment style="font-size: 0.8em; margin-top: 40px;"}
+[(often)]{style="opacity:0.6;"} building an understanding of the data
+:::
+:::
+
+## Shorter turns
+
+<!-- todo: new gif --> 
+![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
+## Shorter turns
+
+::: {style="margin-top:50px; font-size:1.3em"}
+Keep pace with the agent during exploration and analysis
+:::
+
+## Shared environment 
+
+See eye-to-eye with the agent
+
+![](figures/posit-assistant-console.png){fig-align="center"}
+
+## Easy-to-read code
+
+Makes auditing easy when it matters
+
+![](figures/posit-assistant-code.png){fig-align="center"}
+
