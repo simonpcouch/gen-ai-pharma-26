@@ -655,7 +655,7 @@ You do have control over the harness
 ```{r}
 #| echo: false
 #| fig-align: center
-raw <- readRDS("data/bluffbench_additional_models.rds") |>
+raw <- readRDS("data/bluffbench-additional-models.rds") |>
   filter(type == "intuitive") |>
   summarise(pct = mean(score == "C"), .by = model) |>
   mutate(source = "No harness")
