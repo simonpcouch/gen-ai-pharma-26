@@ -658,7 +658,7 @@ You do have control over the harness
 raw <- readRDS("data/bluffbench-additional-models.rds") |>
   filter(type == "intuitive") |>
   summarise(pct = mean(score == "C"), .by = model) |>
-  mutate(source = "No harness")
+  mutate(source = "Minimal harness")
 
 harness <- read.csv("data/harness_data.csv") |>
   filter(harness == "PositAssistant", condition == "intuitive") |>
@@ -684,13 +684,13 @@ bind_rows(raw, harness) |>
         "Claude Opus 4.8 (medium)"
       )
     ),
-    source = factor(source, levels = c("No harness", "Posit Assistant"))
+    source = factor(source, levels = c("Minimal harness", "Posit Assistant"))
   ) |>
   ggplot(aes(y = model, x = pct, fill = source)) +
   geom_col(position = position_dodge()) +
   scale_x_continuous(labels = scales::percent) +
   scale_fill_manual(
-    values = c("No harness" = "#d9d9d9", "Posit Assistant" = "#75AADB")
+    values = c("Minimal harness" = "#d9d9d9", "Posit Assistant" = "#75AADB")
   ) +
   guides(fill = guide_legend(reverse = TRUE)) +
   labs(
@@ -698,7 +698,7 @@ bind_rows(raw, harness) |>
     x = "% correct (intuitive)",
     fill = NULL,
     title = "Performance on bluffbench eval",
-    subtitle = "Posit Assistant vs. no harness, intuitive condition"
+    subtitle = "Posit Assistant vs. minimal harness, intuitive condition"
   ) +
   theme_minimal() +
   theme(
