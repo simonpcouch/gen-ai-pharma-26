@@ -1,47 +1,5 @@
 [
   {
-    "objectID": "notes/todo.html",
-    "href": "notes/todo.html",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "Working file: index.qmd (committed). index-2.qmd is currently identical — safe to ignore or delete.\n\n\n\nBridge divider: “What does this mean for agents for data analysis?”\n“Models improve over time” (plot; no on-slide takeaway)\n“Posit Assistant” (image only; agent definition lives only in notes)\n“Three design choices” roadmap (correct · reproducible · transparent)\n“1. The harness” (placeholder eval plot + blue bubble; “define harness” note)\n“2. Code as the foundation” (list + reproducible/transparent tag)\n“3. The shape of the interaction” (just: shorter turns / shared environment / easy-to-read code)\n(no closing slide — deck ends mid-argument)\n\n\n\n\n\nFlesh out point 3 — added “An analysis is for understanding” slide + the keep-pace tag.\nWrite the close — blue “correct · reproducible · transparent” / “and understood.” slide.\n\n\n\n\n\n“define agent” (Posit Assistant) and “define harness” (harness) — on-slide or spoken?\n“Models improve over time” — give it an on-slide takeaway? (design around them, don’t wait)\nRan Claude Opus 4.5 through bluffbench — results saved (in data/).\nIncorporated Opus 4.5 into the “Models improve over time” plot — computed live from data/opus-4-5.rds (mocked condition, 9.1% = 1/11).\nRe-run Opus 4.5 with 3 epochs — current point is 1 epoch (only 11 mocked items vs 33 for the others), so it’s noisy. Overwrite data/opus-4-5.rds and the plot recomputes itself.\nConsistency: point 2’s takeaway is plain text vs point 1’s blue bubble — unify.\n\n\n\n\n\nRan a bunch of models through bluffbench for the harness comparison (results in data/).\nHarness: built the harness-vs-raw mocked barplot (inline chunk from harness_data.csv + bluffbench_additional_models.rds, Claude Code rows filtered out).\nDecide harness-plot framing. Only Opus 4.8 (medium) shows a clear harness win (18% -&gt; 80%); the other 3 models are flat / within noise (raw side is n=11). Either keep all 4 (honest, nuanced) or focus on Opus 4.8 (clean “harness matters” story).\nCode: added a Posit Assistant data-analysis gif on its own slide (13 MB, portrait — consider mp4/webm for web).\n\n\n\n\n\nFull preview + render, then commit."
-  },
-  {
-    "objectID": "notes/todo.html#current-state-of-the-back-half",
-    "href": "notes/todo.html#current-state-of-the-back-half",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "Bridge divider: “What does this mean for agents for data analysis?”\n“Models improve over time” (plot; no on-slide takeaway)\n“Posit Assistant” (image only; agent definition lives only in notes)\n“Three design choices” roadmap (correct · reproducible · transparent)\n“1. The harness” (placeholder eval plot + blue bubble; “define harness” note)\n“2. Code as the foundation” (list + reproducible/transparent tag)\n“3. The shape of the interaction” (just: shorter turns / shared environment / easy-to-read code)\n(no closing slide — deck ends mid-argument)"
-  },
-  {
-    "objectID": "notes/todo.html#priority-1-the-arguments-landing-drafted-in-index.qmd-pending-voice-review",
-    "href": "notes/todo.html#priority-1-the-arguments-landing-drafted-in-index.qmd-pending-voice-review",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "Flesh out point 3 — added “An analysis is for understanding” slide + the keep-pace tag.\nWrite the close — blue “correct · reproducible · transparent” / “and understood.” slide."
-  },
-  {
-    "objectID": "notes/todo.html#priority-2-make-each-design-choice-land",
-    "href": "notes/todo.html#priority-2-make-each-design-choice-land",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "“define agent” (Posit Assistant) and “define harness” (harness) — on-slide or spoken?\n“Models improve over time” — give it an on-slide takeaway? (design around them, don’t wait)\nRan Claude Opus 4.5 through bluffbench — results saved (in data/).\nIncorporated Opus 4.5 into the “Models improve over time” plot — computed live from data/opus-4-5.rds (mocked condition, 9.1% = 1/11).\nRe-run Opus 4.5 with 3 epochs — current point is 1 epoch (only 11 mocked items vs 33 for the others), so it’s noisy. Overwrite data/opus-4-5.rds and the plot recomputes itself.\nConsistency: point 2’s takeaway is plain text vs point 1’s blue bubble — unify."
-  },
-  {
-    "objectID": "notes/todo.html#priority-3-assets-sara-captures-claude-wires-in",
-    "href": "notes/todo.html#priority-3-assets-sara-captures-claude-wires-in",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "Ran a bunch of models through bluffbench for the harness comparison (results in data/).\nHarness: built the harness-vs-raw mocked barplot (inline chunk from harness_data.csv + bluffbench_additional_models.rds, Claude Code rows filtered out).\nDecide harness-plot framing. Only Opus 4.8 (medium) shows a clear harness win (18% -&gt; 80%); the other 3 models are flat / within noise (raw side is n=11). Either keep all 4 (honest, nuanced) or focus on Opus 4.8 (clean “harness matters” story).\nCode: added a Posit Assistant data-analysis gif on its own slide (13 MB, portrait — consider mp4/webm for web)."
-  },
-  {
-    "objectID": "notes/todo.html#finish",
-    "href": "notes/todo.html#finish",
-    "title": "Sara’s part — plan / todos",
-    "section": "",
-    "text": "Full preview + render, then commit."
-  },
-  {
     "objectID": "index.html#section",
     "href": "index.html#section",
     "title": "",
@@ -186,7 +144,7 @@
     "href": "index.html#correctness-matters-in-data-analysis",
     "title": "",
     "section": "Correctness matters in data analysis",
-    "text": "Correctness matters in data analysis\n\nbut do LLMs care about correctness?\n\n\nso why is this a problem? when you’re working with real data with real world consequences, being correct matters. correctness, fittingly, is really a core value of data science and LLM behavior doesn’t necessarily always line up with this value"
+    "text": "Correctness matters in data analysis\n\nbut do LLMs care about correctness?\n\n\nso why is this a problem? when you’re working with real data with real world consequences, being correct matters. correctness, fittingly, is really a core value of data science when you do an analysis, you want your results to actually line up with the real world, or at least approximate it. That’s the whole point. But LLM behavior doesn’t necessarily always line up with this value of correctness"
   },
   {
     "objectID": "index.html#its-a-convincing-performance",
@@ -207,7 +165,7 @@
     "href": "index.html#correctness-matters-in-data-analysis-1",
     "title": "",
     "section": "Correctness matters in data analysis",
-    "text": "Correctness matters in data analysis\n\nand so do reproducibility and transparency\n\n\n…all often at odds with how LLMs behave\n\n\nwe already mentioned how “correctness matters”. reproducibility and transparency are also central to data science, all often at odds with LLMs.\nWhat does this mean for agents for data analysis?"
+    "text": "Correctness matters in data analysis\n\nand so do reproducibility and transparency\n\n\n…all often at odds with how LLMs behave\n\n\nwe already mentioned how “correctness matters”. reproducibility – get consistent results from same conditions – and transparency – insight into how an analysis was done – are also central to data science, all often at odds with the nondetermistic and black box nature of LLMs.\nWhat does this mean for agents for data analysis?"
   },
   {
     "objectID": "index.html#section-21",
@@ -250,6 +208,13 @@
     "title": "",
     "section": "",
     "text": "LLMs are still useful for data analysis\n\n\n1. Tell them to care about being right\n2. Design the scaffold so that it matters less if they’re wrong"
+  },
+  {
+    "objectID": "index.html#an-agent-is-more-than-just-the-model",
+    "href": "index.html#an-agent-is-more-than-just-the-model",
+    "title": "",
+    "section": "An agent is more than just the model",
+    "text": "An agent is more than just the model\n\n\nIt comes wrapped in a harness:\n\n\n\nHow it’s told to act (prompting)\nWhat tools it has access to use (run code, read files, etc.)\nWhat information it has access to\nand more\n\n\nthere’s more to an agent than just the model comes wrapped in a harness [list] Unless your building or fine tuning an LLM yourself, you don’t have much control over the underlying LLM You do have control over the harness"
   },
   {
     "objectID": "index.html#tell-the-model-to-care-about-being-right",
@@ -305,7 +270,7 @@
     "href": "index.html#section-26",
     "title": "",
     "section": "",
-    "text": "LLMs are aliens\n\n• They can see plots just fine • They are more concerned with performing progress than being right\n\n\n\nLLMs are still useful for data analysis\n\n• Tell them to care about being right • Design the scaffold so that it matters less if they are wrong"
+    "text": "LLMs are aliens\n\n• Can make strange errors  • Can be more concerned with performing progress than correctness\n\n\n\nLLMs are still useful for data analysis\n\n• Tell them to care about being right • Design the scaffold so that it matters less if they are wrong"
   },
   {
     "objectID": "index.html#section-27",
@@ -320,26 +285,5 @@
     "title": "",
     "section": "",
     "text": "thank you 🛸"
-  },
-  {
-    "objectID": "notes/outline.html",
-    "href": "notes/outline.html",
-    "title": "Part 1 - bluffbench",
-    "section": "",
-    "text": "Ends with “Agents enact a performance of progress”"
-  },
-  {
-    "objectID": "notes/outline.html#llms-dont-really-care-about-correctness",
-    "href": "notes/outline.html#llms-dont-really-care-about-correctness",
-    "title": "Part 1 - bluffbench",
-    "section": "LLMs don’t really care about correctness",
-    "text": "LLMs don’t really care about correctness\n\nOr at least, they can be incorrect in ways that feel strange to humans and occassionally difficult to fix.\nIt’s not just that they misinterpret the plots, but that their answers when they are wrong look very similar to their answers when they are right.\n\nAgain, it’s a performance of correctness and certainty.\n\nbluffbench is an example of a pattern: LLMs, at least most of the current models, can exhibit this sort of deeply weird behavior that directly conflicts with what’s correct.\n\nThe result is a model that moves analysis forward, but doesn’t necessarily match the values of data science, including correctness and skepticism.\nand this can lead to deeply weird behavior\n\nIn data science, though, we care about actual correctness."
-  },
-  {
-    "objectID": "notes/outline.html#but-this-doesnt-mean-llms-are-useless-for-data-work",
-    "href": "notes/outline.html#but-this-doesnt-mean-llms-are-useless-for-data-work",
-    "title": "Part 1 - bluffbench",
-    "section": "but this doesn’t mean LLMs are useless for data work",
-    "text": "but this doesn’t mean LLMs are useless for data work\n\nThey are very good at certain tasks, including writing code.\nWe shouldn’t take evidence like bluffbench to mean that LLMs are useless anywhere you value correctness.\nInstead, you have to figure out where they can fit and how to design around their limitations.\nAnother thing: they are generally getting more capable.\n\nShow bluffbench plot over time for most capable anthropic model\nThis is largely good, but introduces a complexity: what is true today might not be true tomorrow. It means it can be difficult to predict what they will be good at in the future."
   }
 ]

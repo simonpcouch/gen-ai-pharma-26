@@ -801,8 +801,8 @@ for verification and transparency: the human has to keep pace and see eye-to-eye
 [LLMs are aliens]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
 
 ::: {style="color: #ee6331; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
-• They can see plots just fine<br>
-• They are more concerned with performing progress than being right
+• Can make strange errors <br>
+• Can be more concerned with performing progress than correctness
 :::
 :::
 

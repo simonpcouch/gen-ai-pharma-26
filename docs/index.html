@@ -476,7 +476,7 @@
 <p>but do LLMs <em>care</em> about correctness?</p>
 </div>
 <aside class="notes">
-<p>so why is this a problem? when you’re working with real data with real world consequences, being correct matters. correctness, fittingly, is really a core value of data science and LLM behavior doesn’t necessarily always line up with this value</p>
+<p>so why is this a problem? when you’re working with real data with real world consequences, being correct matters. correctness, fittingly, is really a core value of data science when you do an analysis, you want your results to actually line up with the real world, or at least approximate it. That’s the whole point. But LLM behavior doesn’t necessarily always line up with this value of correctness</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -559,7 +559,7 @@
 <p>…all often at odds with how LLMs behave</p>
 </div>
 <aside class="notes">
-<p>we already mentioned how “correctness matters”. reproducibility and transparency are also central to data science, all often at odds with LLMs.</p>
+<p>we already mentioned how “correctness matters”. reproducibility – get consistent results from same conditions – and transparency – insight into how an analysis was done – are also central to data science, all often at odds with the nondetermistic and black box nature of LLMs.</p>
 <p>What does this mean for agents for data analysis?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -616,22 +616,6 @@
 <p><span class="fragment" data-fragment-index="1">2. Design the scaffold so that it matters less if they’re wrong</span></p>
 </div>
 </div>
-<!--
-## Models improve over time
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](index_files/figure-revealjs/unnamed-chunk-9-1.png){width=960}
-:::
-:::
-
-
-:::notes
-another thing: they are getting more capable
-and this is just one this one eval
-:::
--->
 </section>
 <section id="well-be-talking-about-agents" class="slide level2">
 <h2>We’ll be talking about agents</h2>
@@ -673,10 +657,37 @@ and this is just one this one eval
 </div>
 </div>
 </section>
+<section id="an-agent-is-more-than-just-the-model" class="slide level2">
+<h2>An agent is more than just the model</h2>
+<div class="fragment">
+<div style="font-size: 1.2em;">
+<p>It comes wrapped in a harness:</p>
+</div>
+</div>
+<ul>
+<li class="fragment">How it’s told to act (prompting)</li>
+<li class="fragment">What tools it has access to use (run code, read files, etc.)</li>
+<li class="fragment">What information it has access to</li>
+<li class="fragment">and more</li>
+</ul>
+<aside class="notes">
+<p>there’s more to an agent than just the model comes wrapped in a harness [list] Unless your building or fine tuning an LLM yourself, you don’t have much control over the underlying LLM You do have control over the harness</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="tell-the-model-to-care-about-being-right" class="slide level2">
 <h2>Tell the model to care about being right</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment" style="text-align:left; font-size:1.2em; margin-top:60px;">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment" style="text-align:left; font-size:1.2em; margin-top:60px;">
 <p>The harness can make a difference in correctness</p>
 </div>
 <aside class="notes">
@@ -794,7 +805,7 @@ LLMs are still useful for data analysis
 <div class="fragment" style="background-color: #FCF6EC; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);">
 <p><span style="color: #ee6331; font-weight: 700; font-size: 1.4em;">LLMs are aliens</span></p>
 <div style="color: #ee6331; font-size: 0.95em; margin-top: 10px; line-height: 1.5;">
-<p>• They can see plots just fine<br> • They are more concerned with performing progress than being right</p>
+<p>• Can make strange errors <br> • Can be more concerned with performing progress than correctness</p>
 </div>
 </div>
 <div class="fragment" style="background-color: #FCF6EC; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);">
