@@ -483,7 +483,7 @@ and LLM behavior doesn't necessarily always line up with this value
 <img src="figures/bluffbench-performance-02.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
 :::
 
-::: {.fragment fragment-index="3" style="text-align:center; margin-top:18px; font-size:1.2em;"}
+::: {.fragment fragment-index="3" style="text-align:center; margin-top:-10px; font-size:1.1em;"}
 but one that occasionally fails to match reality
 :::
 
