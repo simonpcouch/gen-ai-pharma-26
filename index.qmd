@@ -451,12 +451,17 @@ _Agents enact a performance of progress._
 })();
 </script>
 
-##
-
 ## Correctness matters in data analysis
 
 ::: {.fragment}
 but do LLMs _care_ about correctness?
+:::
+
+::: notes
+so why is this a problem?
+when you're working with real data with real world consequences, being correct matters. 
+correctness, fittingly, is really a core value of data science
+and LLM behavior doesn't necessarily always line up with this value
 :::
 
 ## It's a convincing performance
@@ -478,41 +483,44 @@ but do LLMs _care_ about correctness?
 <img src="figures/bluffbench-performance-02.png" class="fragment semi-fade-out" data-fragment-index="1" style="height:285px; box-shadow:0 2px 12px rgba(0,0,0,.12);">
 :::
 
-::: {.fragment fragment-index="3" style="text-align:center; margin-top:18px; font-size:1.2em;"}
+::: {.fragment fragment-index="3" style="text-align:center; margin-top:-10px; font-size:1.1em;"}
 but one that occasionally fails to match reality
 :::
 
 ::: notes
-The result is a model that moves analysis forward, but doesn't necessarily match the values of data science, including correctness and skepticism. 
-
-and this can lead to deeply weird behavior
+but it's a convincing performance right
+we've seen in bluffbench that the model will interpret the plot, and will provide details and supposed evidence for what they see 
+they act like they are moving the analysis forward
+the only problem is that, like in this case where it says this clearly positive trend is negative, is that **it's one that can fail to match reality**
 :::
 
 ## The answers look the same
 
 <div style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:34px; margin-top:24px;">
-<img src="figures/trees-plot.png" style="width:350px;">
+<img src="figures/trees-plot.png" style="width:475px;">
 <div style="display:flex; flex-direction:column; gap:22px;">
 <div style="position:relative;">
-<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:620px; display:block;">
+<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:700px; display:block;">
 <span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
 </div>
 <div style="position:relative;">
-<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:620px; display:block;">
-<span class="fragment" data-fragment-index="5" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
+<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:700px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
 </div>
 <div style="position:relative;">
-<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:620px; display:block;">
-<span class="fragment" data-fragment-index="6" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:700px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
 </div>
 </div>
 </div>
-
-::: {.fragment fragment-index="7" style="text-align: center; margin-top: 24px; font-size: 1.05em;"}
-:::
 
 ::: notes
 The problem isn't just that the model is sometimes wrong, it's that the wrong answers can be indistinguishable from the right ones
+
+we have a clearly parabolic plot
+and three descriptions from the same model
+shared tone, shared style, shared length -- but different description each time
+if you didn't know waht the plot looked like, you wouldn't be able to disentangel the correct ones from the incorrect ones
 :::
 
 ## Correctness matters in data analysis
@@ -522,7 +530,7 @@ and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transp
 :::
 
 ::: {.fragment style="text-align:left; font-size:1.7em; margin-top:60px;"}
-which all often at odds with how LLMs behave
+...all often at odds with how LLMs behave
 :::
 
 ::: notes
@@ -531,15 +539,22 @@ we already mentioned how "correctness matters". reproducibility and transparency
 What does this mean for agents for data analysis?
 :::
 
-## {background-color="#f9e6b5"}
+## {background-color="#FCF6EC"}
 
 ::: {style="font-size: 2em; text-align: left; color: #ee6331; font-weight: 700;"}
 <br>
 <br>
 <br>
-_Part II_
+1. LLMs are aliens. 
+:::
 
-LLMs are still useful for data analysis
+## {background-color="#FCF6EC"}
+
+::: {style="font-size: 2em; text-align: left; color: #ee6331; font-weight: 700;"}
+<br>
+<br>
+<br>
+2. LLMs are still useful for data analysis.
 :::
 
 :::notes
@@ -672,8 +687,6 @@ LLMs are still useful for data analysis
 
 ## Tell the model to care about being right
 
-The harness matters
-
 ```{r}
 #| echo: false
 #| fig-align: center
@@ -722,8 +735,8 @@ bind_rows(raw, harness) |>
   theme_minimal()
 ```
 
-::: {.fragment}
-Can make a difference in correctness
+::: {.fragment style="text-align:left; font-size:1.2em; margin-top:60px;"}
+The harness can make a difference in correctness
 :::
 
 ::: notes
@@ -738,19 +751,17 @@ define harness
 .reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
 </style>
 
-::: {style="text-align: center; color: white; margin-top: 60px;"}
-
-::: {style="font-size: 1.7em;"}
-LLMs are still useful for data analysis
-:::
-
-::: {style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;"}
-[1. Tell them to care about being right]{.fragment .semi-fade-out data-fragment-index="1"}
-
-[2. Design the scaffold so that it matters less if they're wrong]{.fragment  .toc-emph data-fragment-index="1"}
-:::
-
-:::
+<div style="text-align: left; color: white; margin-top: 60px;">
+<div style="font-size: 1.7em;">LLMs are still useful for data analysis</div>
+<div style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;">
+<span class="fragment semi-fade-out" data-fragment-index="1">1. Tell them to care about being right</span><br>
+<span class="fragment toc-emph" data-fragment-index="1">2. Design the scaffold so that it matters less if <br> they're wrong</span>
+<div style="font-size: 0.8em; margin-left: 1.5em; line-height: 1.7; margin-top: 12px; opacity: 0.9;">
+<span class="fragment" data-fragment-index="2">• Have the model write code, in a shared environment, and show it to the user</span><br>
+<span class="fragment" data-fragment-index="3">• Have the model pause often</span>
+</div>
+</div>
+</div>
 
 ## Code as the foundation
 
@@ -783,26 +794,35 @@ See eye-to-eye with the agent
 
 ![](figures/posit-assistant-console.png){fig-align="center"}
 
-## Shorter turns
+## Have the model pause often
+
+<!-- todo: new gif -->
+<div style="display: flex; align-items: center; gap: 48px; margin-top: 20px;">
+<div style="flex: 1; font-size: 1.3em; line-height: 1.5;">
+Keep pace with the agent during exploration and analysis
+</div>
+<div style="flex: 0 0 auto;">
+<img src="figures/posit-assistant-pause-often.gif" style="height: 580px; display: block;">
+</div>
+</div>
+
+## Have the model pause often
 
 _What's the point of an analysis?_
+
+::: {.fragment style="font-size: 1.1em; margin-top: 40px;"}
+[(often)]{style="opacity:0.6;"} building an understanding of the data
+:::
 
 ::: notes
 for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
 :::
 
-## Shorter turns
-
-Keep pace with the agent during exploration and analysis
-
-<!-- todo: new gif --> 
-![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
-
 ##
 
 ::: {style="display: flex; flex-direction: column; gap: 32px; max-width: 90%; margin: 10px auto 0 auto;"}
 
-::: {.fragment style="background-color: #fbeecb; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
+::: {.fragment style="background-color: #FCF6EC; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
 [LLMs are aliens]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
 
 ::: {style="color: #ee6331; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
@@ -811,7 +831,7 @@ Keep pace with the agent during exploration and analysis
 :::
 :::
 
-::: {.fragment style="background-color: #fbeecb; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
+::: {.fragment style="background-color: #FCF6EC; border-radius: 18px; padding: 18px 32px; box-shadow: 0 4px 16px rgba(0,0,0,.2);"}
 [LLMs are still useful for data analysis]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
 
 ::: {style="color: #ee6331; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
@@ -825,3 +845,13 @@ Keep pace with the agent during exploration and analysis
 ##
 
 ![](figures/ai-newsletter.png){fig-align="center"}
+
+::: {style="text-align: center; font-size: 1.1em;"}
+[https://opensource.posit.co/tags/ai-newsletter/](https://opensource.posit.co/tags/ai-newsletter/)
+:::
+
+## {background-color="#FCF6EC"}
+
+::: {style="display: flex; justify-content: center; align-items: center; min-height: 70vh;"}
+[thank you]{style="color: #ee6331; font-weight: 700; font-size: 2.4em;"} <span style="font-size: 2.4em; margin-left: 0.25em;">🛸</span>
+:::
