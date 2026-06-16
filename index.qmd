@@ -825,6 +825,10 @@ for verification and transparency: the human has to keep pace and see eye-to-eye
 [https://opensource.posit.co/tags/ai-newsletter/](https://opensource.posit.co/tags/ai-newsletter/)
 :::
 
+:::footer
+
+:::
+
 ## {background-color="#FCF6EC"}
 
 ::: {style="display: flex; justify-content: center; align-items: center; min-height: 70vh;"}
