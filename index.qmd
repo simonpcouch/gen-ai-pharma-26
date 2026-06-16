@@ -690,8 +690,6 @@ LLMs are still useful for data analysis
 
 ## Tell the model to care about being right
 
-The harness matters
-
 ```{r}
 #| echo: false
 #| fig-align: center
@@ -740,8 +738,8 @@ bind_rows(raw, harness) |>
   theme_minimal()
 ```
 
-::: {.fragment}
-Can make a difference in correctness
+::: {.fragment style="text-align:left; font-size:1.2em; margin-top:60px;"}
+The harness can make a difference in correctness
 :::
 
 ::: notes
@@ -756,14 +754,14 @@ define harness
 .reveal .slides section .fragment.toc-emph.visible { font-weight: 700; }
 </style>
 
-<div style="text-align: center; color: white; margin-top: 60px;">
+<div style="text-align: left; color: white; margin-top: 60px;">
 <div style="font-size: 1.7em;">LLMs are still useful for data analysis</div>
 <div style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;">
 <span class="fragment semi-fade-out" data-fragment-index="1">1. Tell them to care about being right</span><br><br>
-<span class="fragment toc-emph" data-fragment-index="1">2. Design the scaffold so that it matters less if they're wrong</span>
-<div style="font-size: 0.62em; margin-left: 1.5em; line-height: 1.7; margin-top: 12px; opacity: 0.9;">
-• Have the model write code, and show it to the user<br>
-• Have the model pause often
+<span class="fragment toc-emph" data-fragment-index="1">2. Design the scaffold so that it matters less if <br> they're wrong</span>
+<div style="font-size: 0.8em; margin-left: 1.5em; line-height: 1.7; margin-top: 12px; opacity: 0.9;">
+<span class="fragment" data-fragment-index="2">• Have the model write code, and show it to the user</span><br>
+<span class="fragment" data-fragment-index="3">• Have the model pause often</span>
 </div>
 </div>
 </div>
@@ -801,18 +799,22 @@ See eye-to-eye with the agent
 
 ## Shorter turns
 
-_What's the point of an analysis?_
-
-::: notes
-for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
-:::
-
-## Shorter turns
-
 Keep pace with the agent during exploration and analysis
 
 <!-- todo: new gif --> 
 ![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+
+## Shorter turns
+
+_What's the point of an analysis?_
+
+::: {.fragment style="font-size: 1.1em; margin-top: 40px;"}
+[(often)]{style="opacity:0.6;"} building an understanding of the data
+:::
+
+::: notes
+for verification and transparency: the human has to keep pace and see eye-to-eye with the agent (same environment).
+:::
 
 ##
 
@@ -841,3 +843,7 @@ Keep pace with the agent during exploration and analysis
 ##
 
 ![](figures/ai-newsletter.png){fig-align="center"}
+
+::: {style="text-align: center; font-size: 1.1em;"}
+[https://opensource.posit.co/tags/ai-newsletter/](https://opensource.posit.co/tags/ai-newsletter/)
+:::
