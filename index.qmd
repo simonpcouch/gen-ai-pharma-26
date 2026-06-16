@@ -497,25 +497,22 @@ the only problem is that, like in this case where it says this clearly positive 
 ## The answers look the same
 
 <div style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:34px; margin-top:24px;">
-<img src="figures/trees-plot.png" style="width:350px;">
+<img src="figures/trees-plot.png" style="width:475px;">
 <div style="display:flex; flex-direction:column; gap:22px;">
 <div style="position:relative;">
-<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:620px; display:block;">
+<img src="figures/trees-incorrect-01.png" class="fragment" data-fragment-index="1" style="width:700px; display:block;">
 <span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
 </div>
 <div style="position:relative;">
-<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:620px; display:block;">
-<span class="fragment" data-fragment-index="5" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
+<img src="figures/trees-correct.png" class="fragment" data-fragment-index="2" style="width:700px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">✅</span>
 </div>
 <div style="position:relative;">
-<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:620px; display:block;">
-<span class="fragment" data-fragment-index="6" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
+<img src="figures/trees-incorrect-02.png" class="fragment" data-fragment-index="3" style="width:700px; display:block;">
+<span class="fragment" data-fragment-index="4" style="position:absolute; top:50%; right:16px; transform:translateY(-50%); font-size:2.4em; line-height:1; text-shadow:0 0 8px #fff, 0 0 8px #fff;">❌</span>
 </div>
 </div>
 </div>
-
-::: {.fragment fragment-index="7" style="text-align: center; margin-top: 24px; font-size: 1.05em;"}
-:::
 
 ::: notes
 The problem isn't just that the model is sometimes wrong, it's that the wrong answers can be indistinguishable from the right ones
@@ -533,7 +530,7 @@ and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transp
 :::
 
 ::: {.fragment style="text-align:left; font-size:1.7em; margin-top:60px;"}
-which all often at odds with how LLMs behave
+...all often at odds with how LLMs behave
 :::
 
 ::: notes
@@ -757,10 +754,10 @@ define harness
 <div style="text-align: left; color: white; margin-top: 60px;">
 <div style="font-size: 1.7em;">LLMs are still useful for data analysis</div>
 <div style="display: inline-block; text-align: left; font-size: 1.05em; line-height: 1.9; margin-top: 50px;">
-<span class="fragment semi-fade-out" data-fragment-index="1">1. Tell them to care about being right</span><br><br>
+<span class="fragment semi-fade-out" data-fragment-index="1">1. Tell them to care about being right</span><br>
 <span class="fragment toc-emph" data-fragment-index="1">2. Design the scaffold so that it matters less if <br> they're wrong</span>
 <div style="font-size: 0.8em; margin-left: 1.5em; line-height: 1.7; margin-top: 12px; opacity: 0.9;">
-<span class="fragment" data-fragment-index="2">• Have the model write code, and show it to the user</span><br>
+<span class="fragment" data-fragment-index="2">• Have the model write code, in a shared environment, and show it to the user</span><br>
 <span class="fragment" data-fragment-index="3">• Have the model pause often</span>
 </div>
 </div>
