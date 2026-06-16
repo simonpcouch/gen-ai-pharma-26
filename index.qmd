@@ -796,10 +796,15 @@ See eye-to-eye with the agent
 
 ## Have the model pause often
 
+<!-- todo: new gif -->
+<div style="display: flex; align-items: center; gap: 48px; margin-top: 20px;">
+<div style="flex: 1; font-size: 1.3em; line-height: 1.5;">
 Keep pace with the agent during exploration and analysis
-
-<!-- todo: new gif --> 
-![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
+</div>
+<div style="flex: 0 0 auto;">
+<img src="figures/posit-assistant-pause-often.gif" style="height: 580px; display: block;">
+</div>
+</div>
 
 ## Have the model pause often
 
