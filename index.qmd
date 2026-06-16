@@ -461,7 +461,8 @@ but do LLMs _care_ about correctness?
 so why is this a problem?
 when you're working with real data with real world consequences, being correct matters. 
 correctness, fittingly, is really a core value of data science
-and LLM behavior doesn't necessarily always line up with this value
+when you do an analysis, you want your results to actually line up with the real world, or at least approximate it. That's the whole point.
+But LLM behavior doesn't necessarily always line up with this value of correctness
 :::
 
 ## It's a convincing performance
@@ -534,7 +535,8 @@ and so do [reproducibility]{style="color:#447099; font-weight:700;"} and [transp
 :::
 
 ::: notes
-we already mentioned how "correctness matters". reproducibility and transparency are also central to data science, all often at odds with LLMs.
+we already mentioned how "correctness matters". 
+reproducibility -- get consistent results from same conditions -- and transparency -- insight into how an analysis was done -- are also central to data science, all often at odds with the nondetermistic and black box nature of LLMs.
 
 What does this mean for agents for data analysis?
 :::
@@ -588,66 +590,6 @@ LLMs are still useful for data analysis
 
 :::
 
-<!--
-## Models improve over time
-
-```{r}
-#| echo: false
-opus_4_5_pct <- readRDS("data/bluffbench_additional_models.rds") |>
-  filter(model == "Claude Opus 4.5", type == "mocked") |>
-  summarise(pct = mean(score == "C")) |>
-  pull(pct)
-
-claude_bluff <-
-  bluff_results |>
-  filter(
-    str_detect(model, "Claude"),
-    !str_detect(model, "(high)"),
-    type == "mocked"
-  ) |>
-  mutate(correct = score == "C") |>
-  summarise(pct_correct = mean(correct), .by = model) |>
-  mutate(label = str_replace(model, " \\(.*\\)", "")) |>
-  bind_rows(
-    tibble(
-      model = "Claude Opus 4.5",
-      pct_correct = opus_4_5_pct,
-      label = "Claude Opus 4.5"
-    )
-  ) |>
-  mutate(
-    release_date = as.Date(case_match(
-      label,
-      "Claude Opus 4.5" ~ "2025-11-01",
-      "Claude Opus 4.6" ~ "2026-02-05",
-      "Claude Opus 4.7" ~ "2026-04-16",
-      "Claude Opus 4.8" ~ "2026-05-28",
-      "Claude Fable 5" ~ "2026-06-09"
-    ))
-  )
-
-ggplot(claude_bluff, aes(x = release_date, y = pct_correct)) +
-  geom_point(size = 3) +
-  ggrepel::geom_text_repel(aes(label = label), size = 4.5) +
-  scale_x_date(
-    date_labels = "%b %y",
-    date_breaks = "2 months"
-  ) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(
-    x = "Release date",
-    y = "% correct",
-    title = "Bluffbench performance over time",
-    subtitle = "For most expensive Claude models, mocked condition"
-  )
-```
-
-:::notes
-another thing: they are getting more capable
-and this is just one this one eval
-:::
---> 
-
 ## We'll be talking about agents
 
 ::: {.incremental}
@@ -685,12 +627,35 @@ LLMs are still useful for data analysis
 
 :::
 
+## An agent is more than just the model
+
+::: {.fragment}
+::: {style="font-size: 1.2em;"}
+It comes wrapped in a harness:
+:::
+:::
+
+::: {.incremental}
+* How it's told to act (prompting)
+* What tools it has access to use (run code, read files, etc.)
+* What information it has access to
+* and more
+:::
+
+::: notes
+there's more to an agent than just the model
+comes wrapped in a harness
+[list]
+Unless your building or fine tuning an LLM yourself, you don't have much control over the underlying LLM
+You do have control over the harness
+:::
+
 ## Tell the model to care about being right
 
 ```{r}
 #| echo: false
 #| fig-align: center
-raw <- readRDS("data/bluffbench_additional_models.rds") |>
+raw <- readRDS("data/bluffbench-additional-models.rds") |>
   filter(type == "intuitive") |>
   summarise(pct = mean(score == "C"), .by = model) |>
   mutate(source = "No harness")
@@ -725,14 +690,24 @@ bind_rows(raw, harness) |>
   geom_col(position = position_dodge()) +
   scale_x_continuous(labels = scales::percent) +
   scale_fill_manual(
-    values = c("No harness" = "#bbbbbb", "Posit Assistant" = "#447099")
+    values = c("No harness" = "#d9d9d9", "Posit Assistant" = "#75AADB")
   ) +
+  guides(fill = guide_legend(reverse = TRUE)) +
   labs(
-    x = NULL,
-    y = "% correct (intuitive)",
-    fill = NULL
+    y = NULL,
+    x = "% correct (intuitive)",
+    fill = NULL,
+    title = "Performance on bluffbench eval",
+    subtitle = "Posit Assistant vs. no harness, intuitive condition"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = rel(1.5)),
+    plot.title = element_text(size = rel(2)),
+    plot.subtitle = element_text(size = rel(1.3)),
+    legend.text = element_text(size = rel(2))
+  )
 ```
 
 ::: {.fragment style="text-align:left; font-size:1.2em; margin-top:60px;"}
@@ -826,8 +801,8 @@ for verification and transparency: the human has to keep pace and see eye-to-eye
 [LLMs are aliens]{style="color: #ee6331; font-weight: 700; font-size: 1.4em;"}
 
 ::: {style="color: #ee6331; font-size: 0.95em; margin-top: 10px; line-height: 1.5;"}
-• They can see plots just fine<br>
-• They are more concerned with performing progress than being right
+• Can make strange errors <br>
+• Can be more concerned with performing progress than correctness
 :::
 :::
 
