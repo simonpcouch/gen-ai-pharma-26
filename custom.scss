@@ -46,10 +46,14 @@ $presentation-heading-color: darken($purple, 30%) !default;
  color: #ffffff;
 }
 
-// Footer is rendered outside the section, so key off the currently-shown dark
-// slide. !important overrides the inline orange color on the footer span.
-body:has(section.present.has-dark-background) .footer,
-body:has(section.present.has-dark-background) .footer * {
+// Footer is rendered outside the section, so key off the currently-shown
+// slide. Match both reveal's runtime has-dark-background class and the explicit
+// blue background, since #447099 is the deck's only dark slide. !important
+// overrides the inline orange color baked into the footer span.
+body:has(.slides section.present.has-dark-background) .footer,
+body:has(.slides section.present.has-dark-background) .footer *,
+body:has(.slides section.present[data-background-color="#447099"]) .footer,
+body:has(.slides section.present[data-background-color="#447099"]) .footer * {
  color: darken($purple, 25%) !important;
 }
 
