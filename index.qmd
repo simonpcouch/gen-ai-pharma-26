@@ -797,14 +797,14 @@ See eye-to-eye with the agent
 
 ![](figures/posit-assistant-console.png){fig-align="center"}
 
-## Shorter turns
+## Have the model pause often
 
 Keep pace with the agent during exploration and analysis
 
 <!-- todo: new gif --> 
 ![](figures/posit-assistant-data-analysis-code.gif){fig-align="center" height="640"}
 
-## Shorter turns
+## Have the model pause often
 
 _What's the point of an analysis?_
 
